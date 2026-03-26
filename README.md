@@ -47,6 +47,7 @@ Built by [Extension Booster](https://extensionbooster.com/), these skills addres
 | [`extension-test`](skills/extension-test/) | Unit, integration, and E2E testing with Puppeteer | Writing and running tests |
 | [`extension-assets`](skills/extension-assets/) | Generate icons, screenshots, and store listing images | Preparing visual assets |
 | [`extension-payment`](skills/extension-payment/) | Integrate payments (Stripe, Paddle, Lemon Squeezy, Polar, +10 more) | Monetizing, subscriptions, licensing |
+| [`extension-backend`](skills/extension-backend/) | Build backend APIs with NestJS + MongoDB for auth, licensing, webhooks | Need server-side logic, API proxy |
 | [`extension-publish`](skills/extension-publish/) | Chrome Web Store submission, listing optimization, CI/CD | Publishing and updates |
 | [`extension-migration`](skills/extension-migration/) | Migrate from Manifest V2 to V3 with step-by-step guidance | Upgrading legacy extensions |
 
@@ -198,6 +199,14 @@ Integrates payment gateways and Merchant of Record services into Chrome extensio
 **Providers:** Stripe, PayPal, Paddle, Lemon Squeezy, Polar, Creem, Dodo Payments, Razorpay, Adyen, Square, Braintree, Authorize.Net, FastSpring, Gumroad
 **Patterns:** Account-based licensing, license keys, freemium with usage limits, trial periods
 **AI-assisted docs:** Stripe ([llms.txt](https://docs.stripe.com/llms.txt)), Polar ([llms.txt](https://docs.polar.sh/llms-full.txt))
+
+### extension-backend
+
+Builds a secure backend API for extensions that need server-side logic. Auto-activates when the agent detects a need for auth, licensing, webhooks, or API proxying.
+
+**Recommended stack:** [NestJS](https://docs.nestjs.com/) + [MongoDB (Mongoose)](https://mongoosejs.com/docs/)
+**Covers:** Google OAuth via chrome.identity, license verification, payment webhooks, CORS for extensions, rate limiting, input validation
+**Style guides:** [Google TypeScript](https://google.github.io/styleguide/tsguide.html) | [Google JavaScript](https://google.github.io/styleguide/jsguide.html)
 
 ### extension-publish
 
