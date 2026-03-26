@@ -1,98 +1,284 @@
 # Browser Extension Skills for Claude Code
 
-A comprehensive set of [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills) for building, testing, publishing, and maintaining browser extensions. Designed to resolve real pain points extension developers face daily.
+> A production-grade skill set for building, testing, analyzing, and publishing Chrome & browser extensions with [Claude Code](https://docs.claude.com/en/docs/claude-code).
 
-## Skills
+[![Skills](https://img.shields.io/badge/Claude_Code-Skills-blue)](https://docs.claude.com/en/docs/claude-code/skills)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![MV3](https://img.shields.io/badge/Manifest-V3-orange)](https://developer.chrome.com/docs/extensions/develop/migrate)
 
-| Skill | Description | Pain Points Solved |
-|-------|-------------|-------------------|
-| [extension-architect](./extension-architect/) | Project scaffolding, framework selection, architecture patterns | Choosing between WXT/Plasmo/custom, folder structure decisions, cross-browser setup |
-| [extension-manifest](./extension-manifest/) | Manifest V3 generation, validation, templates | Manifest syntax errors, missing fields, MV3 format confusion |
-| [extension-permissions](./extension-permissions/) | Permission analysis, warning preview, minimum permissions | Over-requesting permissions, scary user warnings, CWS rejections |
-| [extension-testing](./extension-testing/) | Unit/integration/E2E testing setup with Puppeteer | No good testing framework, chrome API mocking, headless mode limitations |
-| [extension-publishing](./extension-publishing/) | Chrome Web Store submission, listing optimization, CI/CD | Slow reviews, unclear rejections, listing optimization |
-| [extension-security](./extension-security/) | CSP audit, message validation, vulnerability scanning | CSP restrictions, XSS in extensions, insecure message passing |
-| [extension-debugging](./extension-debugging/) | Multi-context debugging, performance profiling | Console logs scattered across contexts, service worker crashes |
-| [extension-migration](./extension-migration/) | MV2 to MV3 migration guide and checklist | Breaking API changes, service worker conversion, webRequest removal |
+## Why These Skills?
+
+Chrome extension development is uniquely challenging: scattered documentation, confusing permission warnings, multi-context debugging, and opaque Chrome Web Store reviews. These skills turn Claude Code into an extension development expert that can:
+
+- **Scaffold** a complete extension project in seconds
+- **Develop** features with proper API usage and framework detection
+- **Generate** optimized manifest.json with minimum permissions
+- **Analyze** code for security vulnerabilities and CWS compliance
+- **Test** across all extension contexts (service worker, content script, popup)
+- **Create** all required icons and store listing assets
+- **Publish** to Chrome Web Store with CI/CD automation
+- **Migrate** existing extensions from Manifest V2 to V3
+
+---
+
+## Skills Overview
+
+| Skill | Description | Use When |
+|-------|-------------|----------|
+| [`extension-create`](skills/extension-create/) | Auto-scaffold Chrome extensions with WXT framework | Starting a new extension project |
+| [`extension-dev`](skills/extension-dev/) | Develop features with framework detection and Chrome API guidance | Building new features, debugging |
+| [`extension-manifest`](skills/extension-manifest/) | Generate manifest.json with optimal permissions from code analysis | Setting up or updating manifest |
+| [`extension-analyze`](skills/extension-analyze/) | Security audit, best practices, CWS compliance checking | Pre-submission review, code quality |
+| [`extension-test`](skills/extension-test/) | Unit, integration, and E2E testing with Puppeteer | Writing and running tests |
+| [`extension-assets`](skills/extension-assets/) | Generate icons, screenshots, and store listing images | Preparing visual assets |
+| [`extension-publish`](skills/extension-publish/) | Chrome Web Store submission, listing optimization, CI/CD | Publishing and updates |
+| [`extension-migration`](skills/extension-migration/) | Migrate from Manifest V2 to V3 with step-by-step guidance | Upgrading legacy extensions |
+
+---
 
 ## Installation
 
-### Option 1: Install all skills
+### Recommended: Using Skills CLI
+
+Install all skills at once using the [Skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-# Clone to your Claude Code skills directory
-git clone https://github.com/user/browser-extension-skills.git
-cp -r browser-extension-skills/extension-* ~/.claude/skills/
+# Install all skills to your project
+npx skills add nicepkg/browser-extension-skills
+
+# Install globally (available in all projects)
+npx skills add nicepkg/browser-extension-skills -g
+
+# Install specific skills only
+npx skills add nicepkg/browser-extension-skills -s extension-create,extension-dev
+
+# List available skills before installing
+npx skills add nicepkg/browser-extension-skills -l
 ```
 
-### Option 2: Install individual skills
+### Alternative: Manual Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/nicepkg/browser-extension-skills.git
+
+# Copy all skills to your project
+cp -r browser-extension-skills/skills/* .claude/skills/
+
+# Or copy to global Claude Code skills
+cp -r browser-extension-skills/skills/* ~/.claude/skills/
+```
+
+### Alternative: Install Individual Skills
 
 ```bash
 # Copy only the skills you need
-cp -r browser-extension-skills/extension-architect ~/.claude/skills/
-cp -r browser-extension-skills/extension-testing ~/.claude/skills/
-# ... etc
+cp -r browser-extension-skills/skills/extension-create .claude/skills/
+cp -r browser-extension-skills/skills/extension-dev .claude/skills/
 ```
 
-### Option 3: Use as project-level skills
+---
 
-```bash
-# Add to your extension project
-cp -r browser-extension-skills/extension-* .claude/skills/
-```
+## Quick Start
 
-## Usage
-
-Skills activate automatically when Claude Code detects relevant context:
+### 1. Create a New Extension
 
 ```
-# Start a new extension project
-"Create a Chrome extension that blocks ads on YouTube"
-
-# Analyze permissions
-"What permissions does my extension need for tab access and storage?"
-
-# Debug issues
-"My service worker keeps terminating and losing state"
-
-# Prepare for publishing
-"Prepare my extension for Chrome Web Store submission"
-
-# Migrate from MV2
-"Migrate this extension from Manifest V2 to V3"
+> Create a Chrome extension that highlights all links on a page
 ```
 
-## Skill Architecture
+Claude Code activates `extension-create` → scaffolds with WXT → sets up entrypoints → configures manifest.
 
-Each skill follows the [progressive disclosure](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices) pattern:
+### 2. Develop Features
 
 ```
-extension-*/
-├── SKILL.md              # Quick reference (< 150 lines)
-└── references/           # Detailed docs loaded on-demand
-    ├── topic-a.md        # < 150 lines each
-    └── topic-b.md
+> Add a popup that shows link count and lets users toggle highlighting
 ```
 
-- **SKILL.md**: Always loaded when skill activates. Concise, actionable.
-- **references/**: Loaded only when Claude needs deeper context. Token-efficient.
+Claude Code activates `extension-dev` → detects WXT + React → implements popup with chrome.tabs API.
 
-## Research Background
+### 3. Generate Assets
 
-These skills were built from comprehensive research of:
-- [Chrome Extensions official docs](https://developer.chrome.com/docs/extensions)
-- Developer pain points from Reddit, Stack Overflow, GitHub issues
-- Modern tooling ecosystem (WXT, Plasmo, CRXJS, Puppeteer)
-- Chrome Web Store publishing policies and common rejections
-- Security best practices (OWASP, CSP, message validation)
+```
+> Generate all icons and store listing screenshots for my extension
+```
+
+Claude Code activates `extension-assets` → creates icons (16/32/48/128px) → generates listing images.
+
+### 4. Analyze Before Publishing
+
+```
+> Analyze my extension for security issues and CWS compliance
+```
+
+Claude Code activates `extension-analyze` → scans permissions, CSP, message handlers → reports issues.
+
+### 5. Publish
+
+```
+> Prepare and publish my extension to Chrome Web Store
+```
+
+Claude Code activates `extension-publish` → validates listing → packages → submits via CI/CD.
+
+---
+
+## Skill Details
+
+### extension-create
+
+Automatically scaffolds a Chrome extension using the [WXT framework](https://wxt.dev/) with samples from [Chrome Extensions Samples](https://github.com/GoogleChrome/chrome-extensions-samples).
+
+**Supports:** React, Vue, Svelte, Solid, Vanilla TypeScript
+**Features:** Auto-scaffold, framework selection, entrypoint generation, wxt.config.ts setup
+
+### extension-dev
+
+Develops new features by detecting your current framework and stack, then finding proper documentation online.
+
+**References:**
+- [Getting Started](https://developer.chrome.com/docs/extensions/get-started)
+- [Development Guide](https://developer.chrome.com/docs/extensions/develop)
+- [API Reference](https://developer.chrome.com/docs/extensions/reference/api)
+- [Permissions List](https://developer.chrome.com/docs/extensions/reference/permissions-list)
+
+### extension-manifest
+
+Generates optimal `manifest.json` by analyzing your codebase for Chrome API usage and mapping to minimum required permissions.
+
+**References:**
+- [Manifest Reference](https://developer.chrome.com/docs/extensions/reference/manifest)
+- [Permissions List](https://developer.chrome.com/docs/extensions/reference/permissions-list)
+
+### extension-analyze
+
+Audits extensions for security vulnerabilities, performance issues, and Chrome Web Store policy compliance.
+
+**Checks:** Permissions, CSP, message handlers, storage security, XSS vectors, dependencies, CWS compliance
+
+### extension-test
+
+Sets up and runs unit, integration, and E2E tests for Chrome extensions.
+
+**Stack:** Jest for unit/integration, Puppeteer for E2E, chrome API mocks
+**Key constraint:** Extensions cannot run in headless mode
+
+### extension-assets
+
+Generates all required icons and Chrome Web Store listing assets.
+
+**Supports:** ImageMagick CLI generation, Gemini API for AI-generated images, prompt templates for manual generation
+
+### extension-publish
+
+Handles Chrome Web Store submission, listing optimization, and CI/CD automation.
+
+**Features:** Pre-submission checklist, listing SEO, common rejections guide, GitHub Actions workflow
+
+### extension-migration
+
+Step-by-step migration from Manifest V2 to V3.
+
+**Reference:** [Migration Guide](https://developer.chrome.com/docs/extensions/develop/migrate)
+**Covers:** Service workers, declarativeNetRequest, CSP changes, API replacements
+
+---
+
+## Requirements
+
+| Requirement | Details |
+|-------------|---------|
+| [Claude Code](https://docs.claude.com/en/docs/claude-code) | CLI or IDE extension |
+| Node.js | v18+ recommended |
+| npm/pnpm/yarn/bun | Any package manager |
+| Chrome | For testing and debugging |
+| Gemini API Key | Optional, for AI-generated assets (`extension-assets`) |
+
+---
+
+## Tips & Best Practices
+
+### Permission Optimization
+- Always prefer `activeTab` over broad `tabs` + host permissions
+- Use optional permissions for non-essential features
+- Run `extension-analyze` before every CWS submission
+
+### Performance
+- Keep content scripts under 50KB (lazy-load heavy logic)
+- Service workers should be event-driven (no polling)
+- Use `chrome.storage.session` for temporary data
+
+### Security
+- Validate all message senders (`sender.id === chrome.runtime.id`)
+- Never use `innerHTML` with untrusted data
+- No API keys in source code; use a proxy server
+
+### Testing
+- Extensions cannot run in headless Chrome — always use `headless: false`
+- Each E2E test should get a fresh browser instance
+- Mock `chrome.*` APIs consistently with `jest-chrome` or manual mocks
+
+### Publishing
+- First 150 characters of description appear in search results
+- Screenshots at 1280x800 showing features in action convert best
+- Single-purpose policy: one clear function per extension
+
+---
+
+## Architecture
+
+Each skill follows the [progressive disclosure](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices) pattern for optimal token efficiency:
+
+```
+skills/
+├── extension-create/
+│   ├── SKILL.md              # Quick reference (< 150 lines, always loaded)
+│   └── references/           # Detailed docs (loaded on-demand by Claude)
+│       ├── wxt-scaffold-guide.md
+│       ├── wxt-entrypoints.md
+│       ├── extension-templates.md
+│       └── chrome-samples-reference.md
+├── extension-dev/
+├── extension-manifest/
+├── extension-analyze/
+├── extension-test/
+├── extension-assets/
+├── extension-publish/
+└── extension-migration/
+```
+
+- **SKILL.md** — Always loaded when skill activates. Concise, actionable, < 150 lines.
+- **references/** — Loaded only when Claude needs deeper context. < 150 lines each.
+
+---
 
 ## Contributing
 
 1. Fork the repository
-2. Create a skill following the structure above
-3. Ensure SKILL.md is < 150 lines, references < 150 lines each
-4. Submit a pull request
+2. Create your skill under `skills/` following the structure above
+3. Ensure SKILL.md < 150 lines, each reference < 150 lines
+4. Test the skill with Claude Code on real extension projects
+5. Submit a pull request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+---
+
+## Resources
+
+### Official Documentation
+- [Chrome Extensions Docs](https://developer.chrome.com/docs/extensions)
+- [Chrome Web Store Publishing](https://developer.chrome.com/docs/webstore)
+- [Manifest V3 Migration](https://developer.chrome.com/docs/extensions/develop/migrate)
+- [WXT Framework](https://wxt.dev/)
+
+### Community
+- [r/chromeextensions](https://reddit.com/r/chromeextensions)
+- [Chromium Extensions Group](https://groups.google.com/a/chromium.org/g/chromium-extensions)
+- [Stack Overflow: chrome-extension](https://stackoverflow.com/questions/tagged/google-chrome-extension)
+
+---
 
 ## License
 
-MIT
+[MIT](LICENSE)
