@@ -14,34 +14,44 @@ Auto-scaffold a Chrome extension project. Do NOT just explain — execute the wo
 Ask the user to confirm:
 1. **Extension name** (kebab-case, e.g. `my-tab-manager`)
 2. **Short description** (1 sentence)
-3. **Scaffolder**: WXT (recommended) / Plasmo (default: WXT)
-4. **Framework**: React / Vue / Svelte / Vanilla (default: React)
-5. **Package manager**: npm / pnpm / yarn / bun (default: pnpm)
-5. **Features needed** (pick from list below):
+3. **UI framework**: React / Vue / Svelte / Vanilla (default: React)
+4. **Features needed** (pick from list below):
    - Popup UI
    - Content script (modify pages)
    - Background service worker
    - Side panel
    - Options page
    - Context menu
-   - Tab management (`tabs` permission)
-   - Storage (`storage` permission)
-   - Active tab only (`activeTab`)
+   - Tab management / Storage / Active tab only
 
-### Step 2: Scaffold
+### Step 2: Pick scaffolder based on framework choice
 
-**WXT** (recommended):
+| Framework | Recommended Scaffolder | Why |
+|-----------|----------------------|-----|
+| React | **Plasmo** or WXT | Plasmo has CSUI, quickstarts |
+| Vue | **WXT** | First-class Vue support |
+| Svelte | **WXT** | First-class Svelte support |
+| Vanilla TS | **WXT** | Lightest setup |
+
+### Step 3: Scaffold
+
+**WXT** — multi-framework, file-based entrypoints:
 ```bash
-npx wxt@latest init <extension-name> --template <framework>
-cd <extension-name> && pnpm install
+npx wxt@latest init <name> --template <react|vue|svelte|vanilla>
+cd <name> && pnpm install
 ```
 
-**Plasmo** (alternative — React-first, auto-manifest):
+**Plasmo** — React-first, auto-manifest, rich quickstarts:
 ```bash
+# Basic React
 npm create plasmo --with-src
-cd <extension-name> && pnpm install
+# With Tailwind CSS
+npm create plasmo -- --with-tailwindcss
+# With specific template (see https://docs.plasmo.com/quickstarts)
+npm create plasmo -- --with-redux
 ```
-Plasmo docs: https://docs.plasmo.com/
+Quickstarts: https://docs.plasmo.com/quickstarts
+Full docs: https://docs.plasmo.com/
 
 ### Step 3: Configure based on features
 
