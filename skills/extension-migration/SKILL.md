@@ -7,6 +7,8 @@ description: "Migrate Chrome extensions from MV2 to MV3. Service workers, declar
 
 Official migration guide: https://developer.chrome.com/docs/extensions/develop/migrate
 
+> **Consider framework adoption**: When migrating MV2→MV3, consider adopting [WXT](https://wxt.dev/) or [Plasmo](https://docs.plasmo.com/) for built-in MV3 support, auto-manifest generation, and modern tooling.
+
 ## Workflow Overview
 
 1. Audit existing MV2 extension (APIs, permissions, background scripts)

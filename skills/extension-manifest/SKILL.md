@@ -9,11 +9,14 @@ Generate the best `manifest.json` based on current extension implementation. Ana
 
 ## Workflow
 
-1. **Scan** the extension codebase for Chrome API usage
-2. **Map** each API call to its required permission (see `references/api-permission-map.md`)
-3. **Generate** manifest.json with minimum required permissions
-4. **Validate** against Chrome docs and CWS policies
-5. **Report** permission warnings users will see
+1. **Detect** framework: check for `wxt.config.ts`, `plasmo.config.ts`, or raw `manifest.json`
+2. **Scan** the extension codebase for Chrome API usage
+3. **Map** each API call to its required permission (see `references/api-permission-map.md`)
+4. **Generate** manifest.json with minimum required permissions
+5. **Validate** against Chrome docs and CWS policies
+6. **Report** permission warnings users will see
+
+> **Plasmo projects**: Manifest is auto-generated from code and `package.json`. Override via `plasmo.config.ts`. See https://docs.plasmo.com/
 
 ## Docs References
 

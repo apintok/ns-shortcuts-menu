@@ -9,11 +9,17 @@ Audit an existing Chrome extension. Do NOT just explain — execute the workflow
 
 ## Workflow (Execute This)
 
-### Step 1: Locate extension root
+### Step 1: Locate extension root and detect framework
 
-Ask user for path if not provided. Confirm `manifest.json` exists.
+Ask user for path if not provided. Detect framework:
+```bash
+ls wxt.config.ts plasmo.config.ts vite.config.ts manifest.json 2>/dev/null
+```
+- **Plasmo**: manifest auto-generated; check `package.json` and `plasmo.config.ts` instead
+- **WXT**: check `wxt.config.ts` manifest section
+- **Vanilla/CRXJS**: check `manifest.json` directly
 
-### Step 2: Scan manifest.json
+### Step 2: Scan manifest.json (or equivalent config)
 
 ```bash
 # Check MV version, permissions, host_permissions, CSP, web_accessible_resources

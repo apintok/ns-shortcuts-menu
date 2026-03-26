@@ -1,9 +1,9 @@
 ---
 name: extension-create
-description: "Auto-scaffold Chrome extensions with WXT. Ask user for name/features, run npx wxt init, configure entrypoints. Use when: create extension, scaffold, new extension, wxt."
+description: "Auto-scaffold Chrome extensions with WXT or Plasmo. Ask user for name/features, scaffold, configure entrypoints. Use when: create extension, scaffold, new extension."
 ---
 
-# Extension Create (WXT Scaffolder)
+# Extension Create (WXT & Plasmo)
 
 Auto-scaffold a Chrome extension project. Do NOT just explain — execute the workflow.
 
@@ -14,8 +14,9 @@ Auto-scaffold a Chrome extension project. Do NOT just explain — execute the wo
 Ask the user to confirm:
 1. **Extension name** (kebab-case, e.g. `my-tab-manager`)
 2. **Short description** (1 sentence)
-3. **Framework**: React / Vue / Svelte / Vanilla (default: React)
-4. **Package manager**: npm / pnpm / yarn / bun (default: pnpm)
+3. **Scaffolder**: WXT (recommended) / Plasmo (default: WXT)
+4. **Framework**: React / Vue / Svelte / Vanilla (default: React)
+5. **Package manager**: npm / pnpm / yarn / bun (default: pnpm)
 5. **Features needed** (pick from list below):
    - Popup UI
    - Content script (modify pages)
@@ -27,19 +28,25 @@ Ask the user to confirm:
    - Storage (`storage` permission)
    - Active tab only (`activeTab`)
 
-### Step 2: Scaffold with WXT
+### Step 2: Scaffold
 
+**WXT** (recommended):
 ```bash
 npx wxt@latest init <extension-name> --template <framework>
-cd <extension-name>
-pnpm install   # or npm/yarn/bun
+cd <extension-name> && pnpm install
 ```
 
-Templates: `react` | `vue` | `svelte` | `solid` | `vanilla`
+**Plasmo** (alternative — React-first, auto-manifest):
+```bash
+npm create plasmo --with-src
+cd <extension-name> && pnpm install
+```
+Plasmo docs: https://docs.plasmo.com/
 
 ### Step 3: Configure based on features
 
-Edit `wxt.config.ts` with required permissions and manifest fields.
+**WXT**: Edit `wxt.config.ts` with permissions and manifest fields.
+**Plasmo**: Edit `package.json` manifest section or `plasmo.config.ts`. Plasmo auto-generates manifest from code.
 
 ### Step 4: Create entrypoints
 
@@ -47,24 +54,21 @@ Create files in `entrypoints/` based on chosen features (see below).
 
 ### Step 5: Verify setup
 
-```bash
-pnpm dev        # Dev mode with hot reload
-pnpm build      # Production build → .output/
-pnpm zip        # Create store-ready zip
-```
+**WXT**: `pnpm dev` / `pnpm build` / `pnpm zip`
+**Plasmo**: `pnpm dev` / `pnpm build` / `pnpm package` (creates zip in `build/`)
 
 ---
 
 ## Entrypoints Quick Reference
 
-| Feature | File to create |
-|---------|---------------|
-| Popup | `entrypoints/popup/index.html` + `main.tsx` |
-| Background | `entrypoints/background.ts` |
-| Content script | `entrypoints/content.ts` |
-| Options page | `entrypoints/options/index.html` + `main.tsx` |
-| Side panel | `entrypoints/sidepanel/index.html` + `main.tsx` |
-| CSS injection | `entrypoints/content.css` |
+| Feature | WXT | Plasmo |
+|---------|-----|--------|
+| Popup | `entrypoints/popup/index.html` + `main.tsx` | `src/popup.tsx` |
+| Background | `entrypoints/background.ts` | `src/background.ts` |
+| Content script | `entrypoints/content.ts` | `src/contents/main.tsx` |
+| Options page | `entrypoints/options/index.html` | `src/options.tsx` |
+| Side panel | `entrypoints/sidepanel/index.html` | `src/sidepanel.tsx` |
+| Tab page | N/A | `src/tabs/settings.tsx` |
 
 ---
 
@@ -103,10 +107,10 @@ export default defineConfig({
 ## Post-Scaffold Checklist
 
 - [ ] `pnpm install` completed
-- [ ] `wxt.config.ts` has correct permissions
+- [ ] Config has correct permissions (WXT: `wxt.config.ts` / Plasmo: `package.json`)
 - [ ] Entrypoints created for chosen features
 - [ ] `pnpm dev` loads extension without errors
-- [ ] Load `chrome://extensions` → enable Developer mode → Load unpacked → `.output/chrome-mv3-dev`
+- [ ] Load unpacked: WXT → `.output/chrome-mv3-dev` / Plasmo → `build/chrome-mv3-dev`
 
 ---
 

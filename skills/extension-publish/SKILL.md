@@ -103,6 +103,14 @@ chrome-webstore-upload publish \
 
 Full GitHub Actions pipeline: [references/ci-cd-automation.md](references/ci-cd-automation.md)
 
+### Plasmo Built-in Publishing
+
+Plasmo has integrated browser store submission (https://docs.plasmo.com/):
+```bash
+plasmo build           # Build for production
+plasmo package         # Create store-ready zip
+```
+
 ---
 
 ## Reference Files
