@@ -1,11 +1,25 @@
-# Browser Extension Skills for Claude Code
+# Browser Extension Skills for AI Coding Agents
 
-> A production-grade skill set for building, testing, analyzing, and publishing Chrome & browser extensions with [Claude Code](https://docs.claude.com/en/docs/claude-code). Powered by [Extension Booster](https://extensionbooster.com/).
+> Production-grade skills for building, testing, analyzing, and publishing Chrome & browser extensions with AI coding agents. Powered by [Extension Booster](https://extensionbooster.com/).
 
-[![Skills](https://img.shields.io/badge/Claude_Code-Skills-blue)](https://docs.claude.com/en/docs/claude-code/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MV3](https://img.shields.io/badge/Manifest-V3-orange)](https://developer.chrome.com/docs/extensions/develop/migrate)
 [![Powered by Extension Booster](https://img.shields.io/badge/Powered_by-Extension_Booster-purple)](https://extensionbooster.com/)
+
+### Compatible AI Coding Agents
+
+| Agent | Type | Skills Support |
+|-------|------|---------------|
+| [Claude Code](https://docs.claude.com/en/docs/claude-code) | CLI / IDE extension | Native skill loading |
+| [Cursor](https://cursor.com/) | AI-powered IDE | Via `.cursor/rules/` |
+| [Windsurf (Codeium)](https://codeium.com/windsurf) | AI-powered IDE | Via `.windsurfrules` |
+| [GitHub Copilot](https://github.com/features/copilot) | IDE extension | Via `.github/copilot-instructions.md` |
+| [Cline](https://github.com/cline/cline) | VS Code extension | Via `.clinerules` |
+| [Aider](https://aider.chat/) | CLI agent | Via `.aider.conf.yml` conventions |
+| [Continue](https://continue.dev/) | IDE extension | Via `.continue/` config |
+| [Roo Code](https://roo.dev/) | VS Code extension | Via `.roo/rules/` |
+| [Augment Code](https://www.augmentcode.com/) | IDE extension | Via project instructions |
+| [Amazon Q Developer](https://aws.amazon.com/q/developer/) | IDE extension | Via project context |
 
 ## Why These Skills?
 
