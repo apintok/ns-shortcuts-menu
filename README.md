@@ -40,10 +40,10 @@ Built by [Extension Booster](https://extensionbooster.com/), these skills addres
 
 | Skill | Description | Use When |
 |-------|-------------|----------|
-| [`extension-create`](skills/extension-create/) | Auto-scaffold Chrome extensions with WXT framework | Starting a new extension project |
-| [`extension-dev`](skills/extension-dev/) | Develop features with framework detection and Chrome API guidance | Building new features, debugging |
-| [`extension-manifest`](skills/extension-manifest/) | Generate manifest.json with optimal permissions from code analysis | Setting up or updating manifest |
-| [`extension-analyze`](skills/extension-analyze/) | Security audit, best practices, CWS compliance checking | Pre-submission review, code quality |
+| [`extension-create`](skills/extension-create/) | Auto-scaffold with WXT or Plasmo based on framework choice | Starting a new extension project |
+| [`extension-dev`](skills/extension-dev/) | Develop features with auto-detection for WXT, Plasmo, CRXJS, vanilla | Building new features, debugging |
+| [`extension-manifest`](skills/extension-manifest/) | Generate manifest.json or validate Plasmo auto-manifest | Setting up or updating manifest |
+| [`extension-analyze`](skills/extension-analyze/) | Security audit, best practices, CWS compliance (framework-aware) | Pre-submission review, code quality |
 | [`extension-test`](skills/extension-test/) | Unit, integration, and E2E testing with Puppeteer | Writing and running tests |
 | [`extension-assets`](skills/extension-assets/) | Generate icons, screenshots, and store listing images | Preparing visual assets |
 | [`extension-publish`](skills/extension-publish/) | Chrome Web Store submission, listing optimization, CI/CD | Publishing and updates |
@@ -102,7 +102,7 @@ cp -r browser-extension-skills/skills/extension-dev .claude/skills/
 > Create a Chrome extension that highlights all links on a page
 ```
 
-Claude Code activates `extension-create` → scaffolds with WXT → sets up entrypoints → configures manifest.
+Claude Code activates `extension-create` → asks for framework preference → picks WXT or Plasmo → scaffolds → sets up entrypoints → configures manifest.
 
 ### 2. Develop Features
 
@@ -142,24 +142,30 @@ Claude Code activates `extension-publish` → validates listing → packages →
 
 ### extension-create
 
-Automatically scaffolds a Chrome extension using the [WXT framework](https://wxt.dev/) with samples from [Chrome Extensions Samples](https://github.com/GoogleChrome/chrome-extensions-samples).
+Automatically scaffolds a Chrome extension using [WXT](https://wxt.dev/) or [Plasmo](https://docs.plasmo.com/), chosen based on your UI framework. References [Chrome Extensions Samples](https://github.com/GoogleChrome/chrome-extensions-samples) for proven patterns.
+
+**Scaffolder selection:**
+| Framework | Recommended | Why |
+|-----------|-------------|-----|
+| React | Plasmo | CSUI, rich [quickstarts](https://docs.plasmo.com/quickstarts), auto-manifest |
+| Vue / Svelte | WXT | First-class support, file-based entrypoints |
+| Vanilla TS | WXT | Lightest setup |
 
 **Supports:** React, Vue, Svelte, Solid, Vanilla TypeScript
-**Features:** Auto-scaffold, framework selection, entrypoint generation, wxt.config.ts setup
+**Features:** Auto-scaffold, framework-based scaffolder pick, entrypoint generation, Plasmo quickstart templates
 
 ### extension-dev
 
-Develops new features by detecting your current framework and stack, then finding proper documentation online.
+Auto-detects your framework (WXT, Plasmo, CRXJS, vanilla) and UI library, then finds proper documentation to implement features.
 
 **References:**
-- [Getting Started](https://developer.chrome.com/docs/extensions/get-started)
-- [Development Guide](https://developer.chrome.com/docs/extensions/develop)
-- [API Reference](https://developer.chrome.com/docs/extensions/reference/api)
-- [Permissions List](https://developer.chrome.com/docs/extensions/reference/permissions-list)
+- [Getting Started](https://developer.chrome.com/docs/extensions/get-started) | [Development Guide](https://developer.chrome.com/docs/extensions/develop)
+- [API Reference](https://developer.chrome.com/docs/extensions/reference/api) | [Permissions List](https://developer.chrome.com/docs/extensions/reference/permissions-list)
+- [WXT Docs](https://wxt.dev/) | [Plasmo Docs](https://docs.plasmo.com/)
 
 ### extension-manifest
 
-Generates optimal `manifest.json` by analyzing your codebase for Chrome API usage and mapping to minimum required permissions.
+Generates optimal `manifest.json` by analyzing your codebase for Chrome API usage. For Plasmo projects, validates the auto-generated manifest and `plasmo.config.ts` overrides.
 
 **References:**
 - [Manifest Reference](https://developer.chrome.com/docs/extensions/reference/manifest)
@@ -186,16 +192,16 @@ Generates all required icons and Chrome Web Store listing assets.
 
 ### extension-publish
 
-Handles Chrome Web Store submission, listing optimization, and CI/CD automation.
+Handles Chrome Web Store submission, listing optimization, and CI/CD automation. Supports both standard `chrome-webstore-upload` and Plasmo's built-in `plasmo package` workflow.
 
-**Features:** Pre-submission checklist, listing SEO, common rejections guide, GitHub Actions workflow
+**Features:** Pre-submission checklist, listing SEO, common rejections guide, GitHub Actions workflow, Plasmo publish support
 
 ### extension-migration
 
-Step-by-step migration from Manifest V2 to V3.
+Step-by-step migration from Manifest V2 to V3. Suggests adopting WXT or Plasmo during migration for built-in MV3 support.
 
-**Reference:** [Migration Guide](https://developer.chrome.com/docs/extensions/develop/migrate)
-**Covers:** Service workers, declarativeNetRequest, CSP changes, API replacements
+**Reference:** [Migration Guide](https://developer.chrome.com/docs/extensions/develop/migrate) | [WXT](https://wxt.dev/) | [Plasmo](https://docs.plasmo.com/)
+**Covers:** Service workers, declarativeNetRequest, CSP changes, API replacements, framework adoption
 
 ---
 
@@ -285,7 +291,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 - [Chrome Extensions Docs](https://developer.chrome.com/docs/extensions)
 - [Chrome Web Store Publishing](https://developer.chrome.com/docs/webstore)
 - [Manifest V3 Migration](https://developer.chrome.com/docs/extensions/develop/migrate)
-- [WXT Framework](https://wxt.dev/)
+- [WXT Framework](https://wxt.dev/) — File-based, multi-framework extension scaffolder
+- [Plasmo Framework](https://docs.plasmo.com/) — React-first extension framework with auto-manifest
+- [Plasmo Quickstarts](https://docs.plasmo.com/quickstarts) — Ready-to-use templates with Tailwind, Redux, etc.
 
 ---
 
