@@ -46,6 +46,7 @@ Built by [Extension Booster](https://extensionbooster.com/), these skills addres
 | [`extension-analyze`](skills/extension-analyze/) | Security audit, best practices, CWS compliance (framework-aware) | Pre-submission review, code quality |
 | [`extension-test`](skills/extension-test/) | Unit, integration, and E2E testing with Puppeteer | Writing and running tests |
 | [`extension-assets`](skills/extension-assets/) | Generate icons, screenshots, and store listing images | Preparing visual assets |
+| [`extension-payment`](skills/extension-payment/) | Integrate payments (Stripe, Paddle, Lemon Squeezy, Polar, +10 more) | Monetizing, subscriptions, licensing |
 | [`extension-publish`](skills/extension-publish/) | Chrome Web Store submission, listing optimization, CI/CD | Publishing and updates |
 | [`extension-migration`](skills/extension-migration/) | Migrate from Manifest V2 to V3 with step-by-step guidance | Upgrading legacy extensions |
 
@@ -189,6 +190,14 @@ Sets up and runs unit, integration, and E2E tests for Chrome extensions.
 Generates all required icons and Chrome Web Store listing assets.
 
 **Supports:** ImageMagick CLI generation, Gemini API for AI-generated images, prompt templates for manual generation
+
+### extension-payment
+
+Integrates payment gateways and Merchant of Record services into Chrome extensions. Asks user for provider preference, fetches docs, implements backend + extension integration.
+
+**Providers:** Stripe, PayPal, Paddle, Lemon Squeezy, Polar, Creem, Dodo Payments, Razorpay, Adyen, Square, Braintree, Authorize.Net, FastSpring, Gumroad
+**Patterns:** Account-based licensing, license keys, freemium with usage limits, trial periods
+**AI-assisted docs:** Stripe ([llms.txt](https://docs.stripe.com/llms.txt)), Polar ([llms.txt](https://docs.polar.sh/llms-full.txt))
 
 ### extension-publish
 
