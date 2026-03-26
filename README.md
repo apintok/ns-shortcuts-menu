@@ -48,6 +48,7 @@ Built by [Extension Booster](https://extensionbooster.com/), these skills addres
 | [`extension-assets`](skills/extension-assets/) | Generate icons, screenshots, and store listing images | Preparing visual assets |
 | [`extension-payment`](skills/extension-payment/) | Integrate payments (Stripe, Paddle, Lemon Squeezy, Polar, +10 more) | Monetizing, subscriptions, licensing |
 | [`extension-backend`](skills/extension-backend/) | Build backend APIs with NestJS + MongoDB for auth, licensing, webhooks | Need server-side logic, API proxy |
+| [`extension-ui`](skills/extension-ui/) | Polish extension UI/UX for popup, sidepanel, options (dark mode, a11y) | Building or improving extension UI |
 | [`extension-review`](skills/extension-review/) | Scan code for CWS rejection risks, generate report with fixes | Pre-submission review, compliance |
 | [`extension-publish`](skills/extension-publish/) | Chrome Web Store submission, listing optimization, CI/CD | Publishing and updates |
 | [`extension-migration`](skills/extension-migration/) | Migrate from Manifest V2 to V3 with step-by-step guidance | Upgrading legacy extensions |
@@ -208,6 +209,13 @@ Builds a secure backend API for extensions that need server-side logic. Auto-act
 **Recommended stack:** [NestJS](https://docs.nestjs.com/) + [MongoDB (Mongoose)](https://mongoosejs.com/docs/)
 **Covers:** Google OAuth via chrome.identity, license verification, payment webhooks, CORS for extensions, rate limiting, input validation
 **Style guides:** [Google TypeScript](https://google.github.io/styleguide/tsguide.html) | [Google JavaScript](https://google.github.io/styleguide/jsguide.html)
+
+### extension-ui
+
+Builds polished, professional extension UIs. Analyzes existing UI and suggests improvements for popup, sidepanel, and options pages.
+
+**Covers:** Extension UI constraints (popup 800x600, sidepanel 320-400px), design system setup (shadcn/ui, Tailwind, DaisyUI), dark mode, accessibility (WCAG AA), UX patterns (loading states, empty states, onboarding)
+**Stacks:** React + shadcn/ui, Vue + DaisyUI, Svelte + Tailwind, vanilla
 
 ### extension-review
 

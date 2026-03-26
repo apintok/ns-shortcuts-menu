@@ -34,24 +34,32 @@ Generate all required icons and assets for a Chrome extension and CWS listing. D
 
 ## Workflow (Execute This)
 
-### Step 1: Identify source image
+### Step 1: Generate or locate source icon
 
-Ask user: "Do you have a source logo/icon file? (SVG or PNG, min 512x512 recommended)"
+Ask user: "Do you have a source logo? (SVG or PNG, min 512x512)"
 
-If no source: offer to generate via Gemini API or provide prompt templates.
+**If no source — generate SVG directly:**
+Create a clean, professional SVG icon. Design should be:
+- Simple geometric shapes (recognizable at 16x16)
+- Flat design, no gradients (clean at all sizes)
+- Natural, hand-crafted look (NOT AI-generated style)
+- 2-3 colors max, bold contrast
 
-### Step 2: Generate extension icons via ImageMagick
+Save as `icon.svg` in project root.
+
+### Step 2: Convert SVG → PNG (Node.js script)
 
 ```bash
-# From SVG source
-SOURCE="logo.svg"
-for size in 16 32 48 128; do
-  convert -background none -resize ${size}x${size} "$SOURCE" "public/icons/icon${size}.png"
-done
+npm install -D sharp
+node scripts/generate-icons.js
+```
 
-# Action icons
-for size in 16 24 32; do
-  convert -background none -resize ${size}x${size} "$SOURCE" "public/icons/action${size}.png"
+See `references/icon-converter-script.md` for the full Node.js script using **sharp**.
+
+**Fallback (ImageMagick):**
+```bash
+for size in 16 32 48 128; do
+  convert -background none -resize ${size}x${size} icon.svg "public/icons/icon${size}.png"
 done
 ```
 
@@ -120,6 +128,7 @@ done
 ## References
 
 - `references/icon-requirements.md` — Icon specs, manifest config, design guidelines
+- `references/icon-converter-script.md` — Node.js script (sharp) to convert SVG → multi-size PNG
 - `references/store-listing-assets.md` — CWS listing requirements and best practices
 - `references/image-generation-prompts.md` — AI prompt templates, Gemini API setup
 - `references/public-folder-setup.md` — public/ folder structure and manifest paths
