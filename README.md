@@ -1,14 +1,15 @@
 # Browser Extension Skills for Claude Code
 
-> A production-grade skill set for building, testing, analyzing, and publishing Chrome & browser extensions with [Claude Code](https://docs.claude.com/en/docs/claude-code).
+> A production-grade skill set for building, testing, analyzing, and publishing Chrome & browser extensions with [Claude Code](https://docs.claude.com/en/docs/claude-code). Powered by [Extension Booster](https://extensionbooster.com/).
 
 [![Skills](https://img.shields.io/badge/Claude_Code-Skills-blue)](https://docs.claude.com/en/docs/claude-code/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![MV3](https://img.shields.io/badge/Manifest-V3-orange)](https://developer.chrome.com/docs/extensions/develop/migrate)
+[![Powered by Extension Booster](https://img.shields.io/badge/Powered_by-Extension_Booster-purple)](https://extensionbooster.com/)
 
 ## Why These Skills?
 
-Chrome extension development is uniquely challenging: scattered documentation, confusing permission warnings, multi-context debugging, and opaque Chrome Web Store reviews. These skills turn Claude Code into an extension development expert that can:
+Built by [Extension Booster](https://extensionbooster.com/), these skills address the real pain points of Chrome extension development: scattered documentation, confusing permission warnings, multi-context debugging, and opaque Chrome Web Store reviews. They turn Claude Code into an extension development expert that can:
 
 - **Scaffold** a complete extension project in seconds
 - **Develop** features with proper API usage and framework detection
@@ -266,16 +267,19 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Resources
 
-### Official Documentation
+- [Extension Booster](https://extensionbooster.com/) — Build, optimize, and grow Chrome extensions
 - [Chrome Extensions Docs](https://developer.chrome.com/docs/extensions)
 - [Chrome Web Store Publishing](https://developer.chrome.com/docs/webstore)
 - [Manifest V3 Migration](https://developer.chrome.com/docs/extensions/develop/migrate)
 - [WXT Framework](https://wxt.dev/)
 
-### Community
-- [r/chromeextensions](https://reddit.com/r/chromeextensions)
-- [Chromium Extensions Group](https://groups.google.com/a/chromium.org/g/chromium-extensions)
-- [Stack Overflow: chrome-extension](https://stackoverflow.com/questions/tagged/google-chrome-extension)
+---
+
+## Powered by Extension Booster
+
+These skills are powered by [Extension Booster](https://extensionbooster.com/) — the platform for Chrome extension developers to build, optimize, and grow their extensions faster.
+
+Visit [extensionbooster.com](https://extensionbooster.com/) to supercharge your extension development workflow.
 
 ---
 
