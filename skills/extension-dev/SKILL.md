@@ -24,12 +24,29 @@ cat package.json | grep -E '"wxt|plasmo|crxjs|react|vue|svelte"'
 | `vite.config` has `@crxjs` | CRXJS |
 | `manifest.json` in root, none above | Vanilla |
 
-### Step 2: Research docs for detected stack
+### Step 2: Fetch framework docs and style guides
 
-Use `docs-seeker` skill or web search to find:
-- Framework-specific docs (WXT / Plasmo / CRXJS docs site)
-- Chrome API docs for required APIs: `https://developer.chrome.com/docs/extensions/reference/api`
-- Permissions list: `https://developer.chrome.com/docs/extensions/reference/permissions-list`
+Use `docs-seeker` skill or web search to find proper docs for the detected stack.
+
+**Extension framework docs:**
+- WXT: https://wxt.dev/ | Plasmo: https://docs.plasmo.com/ | CRXJS: Vite plugin docs
+- Chrome APIs: https://developer.chrome.com/docs/extensions/reference/api
+- Permissions: https://developer.chrome.com/docs/extensions/reference/permissions-list
+
+**UI framework docs** (fetch based on detected framework):
+
+| Framework | Docs | Style Guide |
+|-----------|------|-------------|
+| React | https://react.dev | https://react.dev/learn |
+| Next.js | https://nextjs.org/docs | https://nextjs.org/docs/app |
+| Vue | https://vuejs.org/guide | https://vuejs.org/style-guide |
+| Svelte | https://svelte.dev/docs | https://svelte.dev/docs |
+| SolidJS | https://solidjs.com/docs | https://solidjs.com/guides |
+| Angular | https://angular.dev/guide | https://angular.dev/style-guide |
+
+**Code style guides** (always follow):
+- TypeScript: https://google.github.io/styleguide/tsguide.html
+- JavaScript: https://google.github.io/styleguide/jsguide.html
 
 ### Step 3: Implement the feature
 
@@ -118,6 +135,7 @@ Full patterns in `references/message-passing-patterns.md`.
 ## References
 
 - `references/framework-detection.md` — detect WXT/Plasmo/CRXJS/vanilla, dev commands
+- `references/framework-styleguides.md` — UI framework docs, style guides, extension framework docs
 - `references/chrome-api-quick-reference.md` — 30+ APIs with permissions and doc links
 - `references/message-passing-patterns.md` — all messaging patterns with TypeScript examples
 - `references/debugging-guide.md` — DevTools per context, common errors, tips
