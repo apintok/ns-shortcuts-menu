@@ -1,4 +1,9 @@
-import { getOrCreateHost, isNetSuitePage, waitForNavigationAnchor } from '../utils/netsuite-dom';
+import {
+  getOrCreateHost,
+  isNetSuitePage,
+  waitForNavigationAnchor,
+  watchHostPlacement,
+} from '../utils/netsuite-dom';
 import { getSettings } from '../utils/storage';
 import { ShortcutsBar } from '../utils/shortcuts-bar';
 
@@ -31,6 +36,8 @@ export default defineContentScript({
     };
 
     void mount();
+
+    watchHostPlacement();
 
     browser.storage.onChanged.addListener((changes, areaName) => {
       if (areaName !== 'sync' || !changes.nsShortcutsMenuSettings) {
