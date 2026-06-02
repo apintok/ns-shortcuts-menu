@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetSuite Shortcuts Menu</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>NetSuite Shortcuts Menu</h1>
+        <p>
+          Customize the shortcuts bar shown below the Navigation Centre menu on
+          all NetSuite pages.
+        </p>
+      </header>
+
+      <section class="card">
+        <label class="toggle-row">
+          <input id="enabled" type="checkbox" />
+          <span>Enable shortcuts menu on NetSuite pages</span>
+        </label>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Shortcuts</h2>
+          <button id="add-shortcut" type="button" class="btn btn-primary">
+            Add shortcut
+          </button>
+        </div>
+
+        <p id="empty-state" class="empty-state hidden">
+          No shortcuts yet. Add your first shortcut to get started.
+        </p>
+
+        <ul id="shortcut-list" class="shortcut-list"></ul>
+      </section>
+
+      <footer class="footer">
+        <button id="save" type="button" class="btn btn-primary">Save changes</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </footer>
+    </main>
+
+    <template id="shortcut-item-template">
+      <li class="shortcut-item">
+        <div class="shortcut-fields">
+          <label>
+            Label
+            <input class="field-label" type="text" required maxlength="40" />
+          </label>
+          <label>
+            URL
+            <input
+              class="field-url"
+              type="text"
+              required
+              placeholder="/app/center/card.nl or https://..."
+            />
+          </label>
+          <label class="checkbox-inline">
+            <input class="field-new-tab" type="checkbox" />
+            Open in new tab
+          </label>
+        </div>
+        <div class="shortcut-actions">
+          <button type="button" class="btn btn-secondary move-up">Up</button>
+          <button type="button" class="btn btn-secondary move-down">Down</button>
+          <button type="button" class="btn btn-danger remove">Remove</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
